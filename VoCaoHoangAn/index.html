@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - CSS Labs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CẤU HÌNH CHUNG --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            height: 100vh;
+            display: flex;       /* Dùng Flexbox để căn giữa toàn màn hình */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- PHẦN TIÊU ĐỀ --- */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            
+            /* Animation xuất hiện từ trên xuống */
+            opacity: 0;
+            animation: slideDown 0.8s ease-out forwards;
+        }
+
+        /* --- PHẦN DANH SÁCH BUTTON --- */
+        .lab-list {
+            display: flex;
+            gap: 30px; /* Khoảng cách giữa các nút */
+        }
+
+        /* --- STYLE CHO TỪNG NÚT (LAB ITEM) --- */
+        .lab-item {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50; /* Màu xanh lá chuẩn */
+            padding: 15px 50px;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* Animation xuất hiện từ dưới lên */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        /* --- HIỆU ỨNG KHI DI CHUỘT (HOVER) --- */
+        .lab-item:hover {
+            transform: translateY(-5px) scale(1.05); /* Nổi lên và to ra chút */
+            background-color: #43a047;
+            box-shadow: 0 15px 25px rgba(76, 175, 80, 0.4); /* Bóng đổ lan tỏa */
+        }
+
+        /* Hiệu ứng vệt sáng lướt qua */
+        .lab-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .lab-item:hover::after {
+            left: 100%;
+        }
+
+        /* --- CHỈNH THỜI GIAN XUẤT HIỆN LẦN LƯỢT --- */
+        .lab-item:nth-child(1) { animation-delay: 0.2s; }
+        .lab-item:nth-child(2) { animation-delay: 0.4s; }
+        .lab-item:nth-child(3) { animation-delay: 0.6s; }
+
+        /* --- ĐỊNH NGHĨA KEYFRAMES --- */
+        @keyframes slideDown {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ANIMATION LABS</h1>
+
+    <div class="lab-list">
+        <a href="lab1/transition.html" class="lab-item">Lab 1</a>
+        
+        <a href="lab2/keyframers.html" class="lab-item">Lab 2</a>
+        
+        <a href="lab3/" class="lab-item">Lab 3</a>
+    </div>
+
+</body>
+</html>
